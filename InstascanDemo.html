@@ -81,9 +81,10 @@ function formatName(name) {
     };
 
 function selectCamera(camera) {
-      this.activeCameraId = camera.id;
-      this.scanner.camera = camera;
-      this.scanner.start();      
+      scanner.stop();
+      activeCameraId = camera.id;
+      scanner.camera = camera;
+      scanner.start();      
     }
 
 document.addEventListener("DOMContentLoaded", function (event) {
