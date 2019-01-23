@@ -58,18 +58,18 @@ function RellenarCamaras(cameras) {
       var nombre = formatName(item.name);
       liElement.title = nombre;
       var spanElement = document.createElement('span');
-      if (item.id == activeCameraId) {
-        spanElement.className = 'active';
-        spanElement.innerText = nombre;
-      }
-      else {
+      //if (item.id == activeCameraId) {
+      //  spanElement.className = 'active';
+      //  spanElement.innerText = nombre;
+      //}
+      //else {
         var aElement = document.createElement('a');
         aElement.innerText = nombre;
         aElement.addEventListener("click", function (event) {
           selectCamera(item);
         });
         spanElement.appendChild(aElement);
-      };
+      //};
       liElement.appendChild(spanElement);
       document.getElementById('ulCameras').appendChild(liElement);
     });
