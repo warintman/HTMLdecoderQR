@@ -100,7 +100,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
       //si no sale el nombre es porque no es un https          
       if (camerasdt.length > 0) {
         activeCameraId = camerasdt[0].id;
-        scanner.camera = camerasdt[camerasdt.length - 1];
+        scanner.camera = camerasdt[0];
         scanner.start();        
       } else {
         console.error('No cameras found.');      
