@@ -1,0 +1,122 @@
+
+<!-- saved from url=(0036)https://schmich.github.io/instascan/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Instascan &ndash; Demo</title>
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="stylesheet" href="style.css">
+    
+  </head>
+  <body>
+    <div id="app">
+      <div class="sidebar">
+        <section class="cameras">
+          <h2>Cameras</h2>
+          <ul id="ulCameras">            
+          </ul>
+        </section>
+        <section class="scans">
+          <h2>Scans</h2>
+          <ul id="scanUL">
+            <li class="empty" style="display: block">No scans yet</li>
+          </ul>          
+        </section>
+      </div>
+      <div class="preview-container">
+        <video id="preview"></video>
+      </div>
+    </div>
+    
+    <script type="text/javascript" src="instascan.min.js"></script>
+    <script type="text/javascript">
+var scanner = null;
+var activeCameraId = null;
+
+function RellenarEscaneo(scan_content) {
+  //sectionScan
+  document.getElementById('scanUL').children[0].style.display = 'none';
+  var liElement = document.createElement('li');
+  liElement.title = liElement.innerText = scan_content;
+  liElement.className = 'scans-enter-active';
+  document.getElementById('scanUL').appendChild(liElement);  
+}
+
+function PonerNoCamaras() {
+  var liElement = document.createElement('li');
+  liElement.className='empty';
+  liElement.innerText='No cameras found'; 
+  document.getElementById('ulCameras').appendChild(liElement);
+}
+
+function RellenarCamaras(cameras) {
+  //ulCameras  
+  if (cameras.length==0) {
+    PonerNoCamaras();    
+  }
+  else {    
+    cameras.forEach(function (item, index) {
+      var liElement = document.createElement('li');
+      var nombre = formatName(item.name);
+      liElement.title = nombre;
+      var spanElement = document.createElement('span');
+      if (item.id == activeCameraId) {
+        spanElement.className = 'active';
+        spanElement.innerText = nombre;
+      }
+      else {
+        var aElement = document.createElement('a');
+        aElement.innerText = nombre;
+        aElement.addEventListener("click", function (event) {
+          selectCamera(item);
+        });
+        spanElement.appendChild(aElement);
+      };
+      liElement.appendChild(spanElement);
+      document.getElementById('ulCameras').appendChild(liElement);
+    });
+  }  
+}
+
+function formatName(name) {
+      return name || '(unknown)';
+    };
+
+function selectCamera(camera) {
+      this.activeCameraId = camera.id;
+      this.scanner.camera = camera;
+      this.scanner.start();      
+    }
+
+document.addEventListener("DOMContentLoaded", function (event) {
+
+  try 
+  {
+    scanner = new Instascan.Scanner({mirror: false, video: document.getElementById('preview'), scanPeriod: 5 });
+    scanner.addListener('scan', function (content, image) {
+      RellenarEscaneo(content);
+      //scans.unshift({ date: +(Date.now()), content: content });
+    });
+    Instascan.Camera.getCameras().then(function (camerasdt) {
+      //si no sale el nombre es porque no es un https          
+      if (camerasdt.length > 0) {
+        activeCameraId = camerasdt[0].id;
+        scanner.camera = camerasdt[camerasdt.length - 1];
+        scanner.start();        
+      } else {
+        console.error('No cameras found.');      
+      };
+      RellenarCamaras(camerasdt);
+    }).catch(function (e) {
+      console.error(e);
+      PonerNoCamaras();    
+    });  
+  }
+  catch (err)
+  {
+    PonerNoCamaras();
+  }
+
+});
+  
+    </script>
+  </body>
+</html>
