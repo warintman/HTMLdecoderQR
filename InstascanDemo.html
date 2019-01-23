@@ -47,7 +47,8 @@ function PonerNoCamaras() {
   document.getElementById('ulCameras').appendChild(liElement);
 }
 
-function RellenarCamaras(cameras) {
+var cameras = [];
+function RellenarCamaras() {
   //ulCameras  
   if (cameras.length==0) {
     PonerNoCamaras();    
@@ -58,22 +59,30 @@ function RellenarCamaras(cameras) {
       var nombre = formatName(item.name);
       liElement.title = nombre;
       var spanElement = document.createElement('span');
-      //if (item.id == activeCameraId) {
-      //  spanElement.className = 'active';
-      //  spanElement.innerText = nombre;
-      //}
-      //else {
+      if (item.id == activeCameraId) {
+        spanElement.className = 'active';
+        spanElement.innerText = nombre;
+      }
+      else {
         var aElement = document.createElement('a');
         aElement.innerText = nombre;
         aElement.addEventListener("click", function (event) {
           selectCamera(item);
         });
         spanElement.appendChild(aElement);
-      //};
+      };
       liElement.appendChild(spanElement);
       document.getElementById('ulCameras').appendChild(liElement);
     });
   }  
+}
+
+function ModificarListaCamaras(){  
+  var myNode = document.getElementById('ulCameras');
+  while (myNode.firstChild) {
+      myNode.removeChild(myNode.firstChild);
+  }
+  RellenarCamaras();
 }
 
 function formatName(name) {
@@ -85,6 +94,7 @@ function selectCamera(camera) {
       activeCameraId = camera.id;
       scanner.camera = camera;
       scanner.start();      
+      ModificarListaCamaras();
     }
 
 document.addEventListener("DOMContentLoaded", function (event) {
@@ -99,13 +109,14 @@ document.addEventListener("DOMContentLoaded", function (event) {
     Instascan.Camera.getCameras().then(function (camerasdt) {
       //si no sale el nombre es porque no es un https          
       if (camerasdt.length > 0) {
+        cameras = camerasdt;
         activeCameraId = camerasdt[0].id;
         scanner.camera = camerasdt[0];
         scanner.start();        
       } else {
         console.error('No cameras found.');      
-      };
-      RellenarCamaras(camerasdt);
+      };      
+      RellenarCamaras();
     }).catch(function (e) {
       console.error(e);
       PonerNoCamaras();    
