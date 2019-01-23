@@ -89,8 +89,7 @@ function formatName(name) {
       return name || '(unknown)';
     };
 
-function selectCamera(camera) {
-      //scanner.stop();
+function selectCamera(camera) {      
       activeCameraId = camera.id;
       scanner.camera = camera;
       scanner.start();      
