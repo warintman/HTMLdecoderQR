@@ -1,0 +1,332 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+main, menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+html {
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+  }
+  
+ *{font-family: Verdana, Arial, Helvetica, sans-serif;}
+  
+  *, *::after, *::before {
+    -webkit-box-sizing: inherit;
+            box-sizing: inherit;
+  }
+
+html,body {    
+    min-height: 100%;    
+    height: 100%;
+    width: 100%;
+}
+
+article, aside, details, figcaption, figure,
+footer, header, hgroup, main, menu, nav, section {
+  display: block;
+}
+
+body {
+    min-width: 320px;
+    background-color:white;       
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    align-content: stretch;
+  }
+  section {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    align-content: stretch;
+    flex-basis: 100%;
+	/*border: 1px solid red;*/
+  }
+
+article {
+    flex-grow: 1;
+    /*border: 1px solid;*/
+}
+
+a {
+  text-decoration: none;
+  color: black;
+  display: block;
+  padding: 20px 5px;
+  color: white;
+}
+
+a:hover {
+  background-color: rgb(176,224,230);
+  color: black;
+}
+
+label {  
+  padding: 15px;
+  position: absolute;
+  z-index: 2;  
+  top: -.5em;
+}
+
+nav > ul {
+  list-style: none;  
+  top: 70px;
+  position: absolute;
+  width: 100%;
+}
+
+img {
+  width: 40px;
+}
+
+input[type="checkbox"] {
+  display: none;
+  top: -.5em;
+}
+
+input[type="checkbox"]:checked ~ nav {
+  transform: translateX(350px);
+}
+
+nav {
+  background-color: rgba(16,16,16,.5);
+  width: 350px;
+  height: calc(100% + .5em);
+  position: absolute;
+  left: -350px;
+  transition: all .5s;
+  top: -.5em;
+  z-index: 1;
+}
+
+header {
+    text-align: center;
+    width: 100%;
+    line-height: 3.5em;
+    background-color: coral;
+}
+
+footer {
+    text-align: center;
+    width: 100%;
+    line-height: 1.5em;
+    background-color: coral;
+    position:fixed;
+    left:0px;
+    bottom:0px;    
+}
+
+nav > .sidebar {
+  margin-top: 4em;
+}
+
+.sidebar {
+  background: #eceff1;
+  min-width: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  overflow: auto;
+}
+.sidebar h2 {
+  font-weight: normal;
+  font-size: 1.0rem;
+  background: #607d8b;
+  color: #fff;
+  padding: 10px;
+  margin: 0;
+}
+.sidebar ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+.sidebar li {
+  line-height: 175%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-wrap: none;
+  text-overflow: ellipsis;
+}
+
+nav > .sidebar {
+  background: transparent !important;
+}
+
+.no-camera {
+  text-align: center;  
+  display: none;
+  margin-top: 50%;
+}
+
+.no-camera > div {
+  font-weight: normal;
+  font-size: 1.0rem;
+  background: #607d8b;
+  color: #fff;
+  display: inline-block;
+  padding: 10px 10px;
+  font-style: italic;
+}
+
+.cameras {
+  flex-direction: column;
+}
+
+.cameras ul {
+  padding: 15px 20px;  
+}
+.cameras .active {
+  font-weight: bold;
+  /*color: #009900;*/
+  color: white;
+}
+.cameras a {
+  color: #555;
+  text-decoration: none;
+  cursor: pointer;
+}
+.cameras a:hover {
+  text-decoration: underline;
+}
+.cameras .empty {
+  color: white;
+  font-weight: bold;
+}
+
+.scans {
+  flex-direction: column;
+}
+
+.scans li {
+  padding: 10px 20px;
+  border-bottom: 1px solid #ccc;
+}
+.empty {
+  font-style: italic;
+}
+.preview-container {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  width: 100%;
+  overflow: hidden;
+}
+
+#preview {
+  width: 100%;
+  height: 100%;
+}
+
+@keyframes yourAnimation{
+  0%{
+      transform: rotate(xx);
+      background: yellow;
+      }
+  100%{
+      transform: rotate(xx);
+      background: #ffffff;
+      }
+}
+
+.scans-enter-active{
+  animation: yourAnimation 2s 1 0s linear;
+}
+
+
+/* 
+  ##Device = Desktops
+  ##Screen = 1281px to higher resolution desktops
+*/
+
+@media (min-width: 1281px) {
+  
+    section {
+        flex-direction: row;
+    }
+    
+  }
+  
+  /* 
+    ##Device = Laptops, Desktops
+    ##Screen = B/w 1025px to 1280px
+  */
+  
+  @media (min-width: 1025px) and (max-width: 1280px) {
+    
+    section {
+        flex-direction: row;
+    }
+    
+  }
+  
+  /* 
+    ##Device = Tablets, Ipads (portrait)
+    ##Screen = B/w 768px to 1024px
+  */
+  
+  @media (min-width: 768px) and (max-width: 1024px) {
+    
+    section {
+        flex-direction: row;
+    }
+    
+  }
+  
+  /* 
+    ##Device = Tablets, Ipads (landscape)
+    ##Screen = B/w 768px to 1024px
+  */
+  
+  @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+    
+    section {
+        flex-direction: row;
+    }
+    
+  }
+  
+  /* 
+    ##Device = Low Resolution Tablets, Mobiles (Landscape)
+    ##Screen = B/w 481px to 767px
+  */
+  
+  @media (min-width: 481px) and (max-width: 767px) {
+    
+    section {
+        flex-direction: column;
+    }
+    
+  }
+  
+  /* 
+    ##Device = Most of the Smartphones Mobiles (Portrait)
+    ##Screen = B/w 320px to 479px
+  */
+  
+  @media (min-width: 320px) and (max-width: 480px) {
+    
+    section {
+        flex-direction: column;
+    }
+    
+  }

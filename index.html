@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta name="viewport" content="width=device-width">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Demo</title>
+    <link rel="icon" type="image/png" href="favicon.ico">
+    <link rel="stylesheet" href="index.css" type="text/css">
+    </head>
+    <body>
+            <header>
+                    <h1>DEMO</h1>      
+                  </header> 
+
+            
+            <input type="checkbox" id="check">
+            <label for="check">
+                <img src="menu.png"> 
+            </label>
+                   
+        <nav>
+            <div class="sidebar">
+                <section class="cameras">
+                  <h2>Cameras</h2>
+                  <ul id="ulCameras">            
+                  </ul>
+                </section>
+            </div>
+        </nav>
+
+<section>
+        <article>
+            <div class="preview-container">
+                <video id="preview"></video>
+              </div>
+            <div id="nocamera" class="no-camera"><div>No se ha podido acceder a la cámara</div></div>
+        </article>
+        <article>
+            <div class="sidebar">                
+                <section class="scans">
+                  <h2>Scans</h2>
+                  <ul id="scanUL">
+                    <li class="empty" style="display: block">No scans yet</li>
+                  </ul>          
+                </section>
+              </div>
+        </article>
+</section>
+
+<footer>
+pie de demo
+</footer>
+<script type="text/javascript" src="instascan.min.js"></script>
+<script type="text/javascript" src="index.js"></script>
+    </body>
+    </html>

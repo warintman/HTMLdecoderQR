@@ -1,33 +1,3 @@
-
-<!-- saved from url=(0036)https://schmich.github.io/instascan/ -->
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>Instascan &ndash; Demo</title>
-  <link rel="icon" type="image/png" href="favicon.png">
-  <link rel="stylesheet" href="style.css">
-    
-  </head>
-  <body>
-    <div id="app">
-      <div class="sidebar">
-        <section class="cameras">
-          <h2>Cameras</h2>
-          <ul id="ulCameras">            
-          </ul>
-        </section>
-        <section class="scans">
-          <h2>Scans</h2>
-          <ul id="scanUL">
-            <li class="empty" style="display: block">No scans yet</li>
-          </ul>          
-        </section>
-      </div>
-      <div class="preview-container">
-        <video id="preview" style="width:100%; height: 100%"></video>
-      </div>
-    </div>
-    
-    <script type="text/javascript" src="instascan.min.js"></script>
-    <script type="text/javascript">
 var scanner = null;
 var activeCameraId = null;
 
@@ -45,6 +15,8 @@ function PonerNoCamaras() {
   liElement.className='empty';
   liElement.innerText='No cameras found'; 
   document.getElementById('ulCameras').appendChild(liElement);
+  document.getElementById('preview').style.display='none';
+  document.getElementById('nocamera').style.display='block';
 }
 
 var cameras = [];
@@ -89,10 +61,12 @@ function formatName(name) {
       return name || '(unknown)';
     };
 
-function selectCamera(camera) {      
+function selectCamera(camera) {        
       activeCameraId = camera.id;
       scanner.camera = camera;
       scanner.start();      
+      document.getElementById('preview').style.display='block';
+      document.getElementById('nocamera').style.display='none';
       ModificarListaCamaras();
     }
 
@@ -127,7 +101,3 @@ document.addEventListener("DOMContentLoaded", function (event) {
   }
 
 });
-  
-    </script>
-  </body>
-</html>
