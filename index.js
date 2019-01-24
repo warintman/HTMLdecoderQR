@@ -11,6 +11,7 @@ function Acceder() {
 
 function RellenarEscaneo(scan_content) {
   //sectionScan
+  document.getElementById('wait').style.display='block';
   var myNode = document.getElementById('scanUL');
   while (myNode.firstChild) {
       myNode.removeChild(myNode.firstChild);
@@ -21,6 +22,7 @@ function RellenarEscaneo(scan_content) {
   liElement.className = 'scans-enter-active';
   document.getElementById('scanUL').appendChild(liElement);  
   document.getElementById('btnAcceso').style.display='block';
+  document.getElementById('wait').style.display='none';
 }
 
 function PonerNoCamaras() {
@@ -88,7 +90,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
   try 
   {
     scanner = new Instascan.Scanner({mirror: false, video: document.getElementById('preview'), scanPeriod: 5 });
-    scanner.addListener('scan', function (content, image) {
+    scanner.addListener('scan', function (content, image) {      
       RellenarEscaneo(content);
       //scans.unshift({ date: +(Date.now()), content: content });
     });

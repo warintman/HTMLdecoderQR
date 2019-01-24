@@ -240,6 +240,15 @@ nav > .sidebar {
       max-height: 150px;*/
 }
 
+#wait {
+  float: left;
+  display: none;
+}
+
+#wait > img {
+  width: 32px;
+}
+
 .accesoPermitido {
   float: right;
   cursor:pointer;
