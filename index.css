@@ -197,10 +197,10 @@ nav > .sidebar {
 .cameras .active {
   font-weight: bold;
   /*color: #009900;*/
-  color: white;
+  color:greenyellow;
 }
 .cameras a {
-  color: #555;
+  color: #white;
   text-decoration: none;
   cursor: pointer;
 }
