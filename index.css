@@ -239,7 +239,7 @@ nav > .sidebar {
       max-height: 150px;*/
 }
 
-@keyframes yourAnimation{
+@keyframes scanAnimation{
   0%{
       transform: rotate(xx);
       background: yellow;
@@ -251,7 +251,7 @@ nav > .sidebar {
 }
 
 .scans-enter-active{
-  animation: yourAnimation 2s 1 0s linear;
+  animation: scanAnimation 2s 1 0s linear;
 }
 
 
@@ -318,10 +318,15 @@ nav > .sidebar {
         flex-direction: column;
     }
     
+    article {
+      flex-grow: 0;
+    }
+    
     #preview {
       max-width: 200px;
       max-height: 200px;
     }
+
 
   }
   
@@ -334,6 +339,10 @@ nav > .sidebar {
     
     section {
         flex-direction: column;
+    }
+
+    article {
+      flex-grow: 0;
     }
 
     #preview {
