@@ -10,6 +10,9 @@ function Acceder() {
 }
 
 function RellenarEscaneo(scan_content) {
+  //para los dispositivos pequenos se puede mostrar y ocultar la camara y el resultado
+  //cuando se haga el escaneo para ponerla al 100% y mejorar el escaneo
+  
   //sectionScan
   document.getElementById('wait').style.display='block';
   var myNode = document.getElementById('scanUL');
