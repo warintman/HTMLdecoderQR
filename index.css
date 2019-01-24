@@ -235,6 +235,8 @@ nav > .sidebar {
 #preview {
   /*width: 100%;
   height: 100%;*/
+  max-width: 150px;
+      max-height: 150px;
 }
 
 @keyframes yourAnimation{
@@ -317,8 +319,8 @@ nav > .sidebar {
     }
     
     #preview {
-      max-width: 200px;
-      max-height: 200px;
+      /*max-width: 200px;
+      max-height: 200px;*/
     }
 
   }
