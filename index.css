@@ -316,6 +316,10 @@ nav > .sidebar {
         flex-direction: column;
     }
     
+    #preview {
+      max-width: 50%;
+    }
+    
   }
   
   /* 
