@@ -1,13 +1,26 @@
 var scanner = null;
 var activeCameraId = null;
 
+function Acceder() {
+  var myNode = document.getElementById('scanUL');
+  while (myNode.firstChild) {
+      myNode.removeChild(myNode.firstChild);
+  }
+  document.getElementById('btnAcceso').style.display='none';
+}
+
 function RellenarEscaneo(scan_content) {
   //sectionScan
-  document.getElementById('scanUL').children[0].style.display = 'none';
+  var myNode = document.getElementById('scanUL');
+  while (myNode.firstChild) {
+      myNode.removeChild(myNode.firstChild);
+  }
+  //document.getElementById('scanUL').children[0].style.display = 'none';
   var liElement = document.createElement('li');
   liElement.title = liElement.innerText = scan_content;
   liElement.className = 'scans-enter-active';
   document.getElementById('scanUL').appendChild(liElement);  
+  document.getElementById('btnAcceso').style.display='block';
 }
 
 function PonerNoCamaras() {
@@ -83,8 +96,8 @@ document.addEventListener("DOMContentLoaded", function (event) {
       //si no sale el nombre es porque no es un https          
       if (camerasdt.length > 0) {
         cameras = camerasdt;
-        activeCameraId = camerasdt[0].id;
-        scanner.camera = camerasdt[0];
+        activeCameraId = camerasdt[camerasdt.length-1].id;
+        scanner.camera = camerasdt[camerasdt.length-1];
         scanner.start();        
       } else {
         console.error('No cameras found.');      
