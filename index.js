@@ -12,20 +12,24 @@ function Acceder() {
 function RellenarEscaneo(scan_content) {
   //para los dispositivos pequenos se puede mostrar y ocultar la camara y el resultado
   //cuando se haga el escaneo para ponerla al 100% y mejorar el escaneo
-  
+
   //sectionScan
   document.getElementById('wait').style.display='block';
-  var myNode = document.getElementById('scanUL');
-  while (myNode.firstChild) {
-      myNode.removeChild(myNode.firstChild);
-  }
-  //document.getElementById('scanUL').children[0].style.display = 'none';
-  var liElement = document.createElement('li');
-  liElement.title = liElement.innerText = scan_content;
-  liElement.className = 'scans-enter-active';
-  document.getElementById('scanUL').appendChild(liElement);  
-  document.getElementById('btnAcceso').style.display='block';
-  document.getElementById('wait').style.display='none';
+  //var millisecondsToWait = 2000;
+  //setTimeout(function() {
+    var myNode = document.getElementById('scanUL');
+    while (myNode.firstChild) {
+        myNode.removeChild(myNode.firstChild);
+    }
+    //document.getElementById('scanUL').children[0].style.display = 'none';
+    var liElement = document.createElement('li');
+    liElement.title = liElement.innerText = scan_content;
+    liElement.className = 'scans-enter-active';
+    document.getElementById('scanUL').appendChild(liElement);  
+    document.getElementById('btnAcceso').style.display='block';
+    document.getElementById('wait').style.display='none';
+  //}, millisecondsToWait);
+  
 }
 
 function PonerNoCamaras() {
