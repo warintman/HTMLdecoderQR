@@ -318,8 +318,9 @@ nav > .sidebar {
     
     #preview {
       max-width: 50%;
+      max-height: 50%;
     }
-    
+
   }
   
   /* 
@@ -335,6 +336,7 @@ nav > .sidebar {
 
     #preview {
       max-width: 50%;
+      max-height: 50%;
     }
     
   }
