@@ -328,5 +328,9 @@ nav > .sidebar {
     section {
         flex-direction: column;
     }
+
+    #preview {
+      max-width: 50%;
+    }
     
   }
