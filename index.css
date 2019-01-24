@@ -243,7 +243,7 @@ nav > .sidebar {
 .accesoPermitido {
   float: right;
   cursor:pointer;
-  letter-spacing:3px;  
+  /*letter-spacing:3px;  */
   margin-right: 3%; 
   background-color: cornflowerblue;
   color: white;
