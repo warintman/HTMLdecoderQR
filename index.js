@@ -1,18 +1,26 @@
 var scanner = null;
 var activeCameraId = null;
+var enEntornoMovil = false;
 
-function Acceder() {
+function Acceder() {  
   var myNode = document.getElementById('scanUL');
   while (myNode.firstChild) {
       myNode.removeChild(myNode.firstChild);
   }
   document.getElementById('btnAcceso').style.display='none';
+  if (enEntornoMovil) {
+    document.getElementById('camara').style.display='block';
+    document.getElementById('resultado').style.display='none';    
+  }
 }
 
 function RellenarEscaneo(scan_content) {
   //para los dispositivos pequenos se puede mostrar y ocultar la camara y el resultado
   //cuando se haga el escaneo para ponerla al 100% y mejorar el escaneo
-
+  if (enEntornoMovil) {
+    document.getElementById('camara').style.display='none';
+    document.getElementById('resultado').style.display='block';    
+  }
   //sectionScan
   document.getElementById('wait').style.display='block';
   //var millisecondsToWait = 2000;
@@ -92,10 +100,40 @@ function selectCamera(camera) {
       ModificarListaCamaras();
     }
 
+var handleMediaChange = function (mql) {
+
+    // For some reason Firefox has trouble always running this code.
+    // The console.log seems to help it.
+    // TODO: Figure out what the hell that's all about
+    //console.log();        
+    //if (mql.matches) {}
+    if (mql.matches && (mql.media==='screen and (max-width: 480px)' || mql.media==='screen and (max-width: 767px)')) {
+        //movil            
+        enEntornoMovil = true;
+        if (document.getElementById('btnAcceso').style.display=='block') {
+          document.getElementById('camara').style.display='none';
+          document.getElementById('resultado').style.display='block';
+        }
+        else {
+          document.getElementById('camara').style.display='block';
+          document.getElementById('resultado').style.display='none';
+        }        
+    }        
+    else {
+      enEntornoMovil = false;
+      document.getElementById('camara').style.display='block';
+      document.getElementById('resultado').style.display='block';
+    }
+};
+
 document.addEventListener("DOMContentLoaded", function (event) {
 
   try 
   {
+    //https://bugs.chromium.org/p/chromium/issues/detail?id=49001
+    //poner el chrome con --allow-file-access-from-files para probarlo en local
+    mqEvents(handleMediaChange);
+
     scanner = new Instascan.Scanner({mirror: false, video: document.getElementById('preview'), scanPeriod: 5 });
     scanner.addListener('scan', function (content, image) {      
       RellenarEscaneo(content);

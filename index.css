@@ -279,6 +279,9 @@ nav > .sidebar {
   animation: scanAnimation 2s 1 0s linear;
 }
 
+#resultado {
+  display: block;
+}
 
 /* 
   ##Device = Desktops
@@ -298,7 +301,7 @@ nav > .sidebar {
     ##Screen = B/w 1025px to 1280px
   */
   
-  @media (min-width: 1025px) and (max-width: 1280px) {
+  @media screen and (max-width: 1280px) {
     
     section {
         flex-direction: row;
@@ -311,7 +314,7 @@ nav > .sidebar {
     ##Screen = B/w 768px to 1024px
   */
   
-  @media (min-width: 768px) and (max-width: 1024px) {
+  @media screen and (max-width: 1024px) {
     
     section {
         flex-direction: row;
@@ -324,7 +327,7 @@ nav > .sidebar {
     ##Screen = B/w 768px to 1024px
   */
   
-  @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+  @media screen and (max-width: 1024px) and (orientation: landscape) {
     
     section {
         flex-direction: row;
@@ -337,7 +340,7 @@ nav > .sidebar {
     ##Screen = B/w 481px to 767px
   */
   
-  @media (min-width: 481px) and (max-width: 767px) {
+  @media screen and (max-width: 767px) {
     
     section {
         flex-direction: column;
@@ -347,9 +350,8 @@ nav > .sidebar {
       flex-grow: 0;
     }
 
-    #preview {
-      max-width: 200px;
-      max-height: 200px;
+    #resultado {
+      display: none;
     }
 
 
@@ -360,7 +362,7 @@ nav > .sidebar {
     ##Screen = B/w 320px to 479px
   */
   
-  @media (min-width: 320px) and (max-width: 480px) {
+  @media screen and (max-width: 480px) {
     
     section {
         flex-direction: column;
@@ -370,9 +372,8 @@ nav > .sidebar {
       flex-grow: 0;
     }
 
-    #preview {
-      max-width: 200px;
-      max-height: 200px;
+    #resultado {
+      display: none;
     }
     
   }

@@ -30,17 +30,17 @@
         </nav>
 
 <section>
-        <article>
+        <article id="camara">
             <div class="preview-container">
                 <video id="preview"></video>
               </div>
             <div id="nocamera" class="no-camera"><div>No se ha podido acceder a la cámara</div></div>
         </article>
-        <article>
+        <article id="resultado">            
             <div class="sidebar">                
                 <section class="scans">                    
                   <h2>Resultado
-                        <div id="wait"><img src="bg-wait.gif"></div>
+                        <div id="wait"><img src="wait.gif"></div>
                   <input type="button" id="btnAcceso" class="accesoPermitido" value="Acceso permitido" onclick="Acceder()">
                 </h2>
                   <ul id="scanUL">
@@ -54,6 +54,7 @@
 <footer>
 pie de demo
 </footer>
+<script type="text/javascript" src="mq-events.js"></script>
 <script type="text/javascript" src="instascan.min.js"></script>
 <script type="text/javascript" src="index.js"></script>
     </body>
