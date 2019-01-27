@@ -343,6 +343,10 @@ nav > .sidebar {
   @media screen and (max-width: 767px) {
     
     section {
+        flex-direction: row;
+    }
+	  
+    /*section {
         flex-direction: column;
     }
     
@@ -352,7 +356,7 @@ nav > .sidebar {
 
     #resultado {
       display: none;
-    }
+    }*/
 
 
   }
